@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  h4
+    a(href="/") Home
+
+  ul
+    each materia in materias
+        li
+            strong #{ materia.materias }
+            p ID: #{ materia.id }
+            p Materia: #{materia.nombre}
+            p Secciones: #{materia.secciones} 
+            p Numero de Alumnos: #{materia.numalumnos}

@@ -2,10 +2,17 @@ var express = require('express');
 var router = express.Router();
 var EventosController = require ("../controllers/eventos.c")
 
-router.get('/', function(req, res, next) {
+router.get('/view', function(req, res, next) {
     const eventos = EventosController.mostrar();
-    res.send (eventos)
+    res.render ('eventos', {
+      title: 'Eventos',
+      eventos: eventos
+    })
   });
+
+  router.get('/', function(req, res, next) {
+    res.send (EventosController.mostrar());
+    });
 
   router.post('/', function(req, res, next) {
     EventosController.añadir(req.body);

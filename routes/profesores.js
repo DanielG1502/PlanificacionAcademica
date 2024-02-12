@@ -2,10 +2,17 @@ var express = require('express');
 var router = express.Router();
 var ProfesoresController = require ("../controllers/profesores.c")
 
-router.get('/', function(req, res, next) {
+router.get('/view', function(req, res, next) {
     const profesores = ProfesoresController.mostrar();
-    res.send (profesores)
+    res.render ('profesores', {
+      tite: 'Profesores',
+      profesores: profesores
+    });
   });
+
+  router.get('/', function(req, res, next) {
+    res.send (ProfesoresController.mostrar());
+    });
 
   router.post('/', function(req, res, next) {
     ProfesoresController.añadir(req.body);

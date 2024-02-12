@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  h4
+    a(href="/") Home
+
+  ul
+    each profesor in profesores
+        li
+            strong #{ profesor.profesores }
+            p ID: #{ profesor.id }
+            p Nombre: #{profesor.nombre + ' ' + profesor.apellido}
+            p Materias: #{profesor.materias}

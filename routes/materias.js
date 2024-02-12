@@ -2,10 +2,17 @@ var express = require('express');
 var router = express.Router();
 var MateriasController = require ("../controllers/materias.c")
 
-router.get('/', function(req, res, next) {
+router.get('/view', function(req, res, next) {
     const materias = MateriasController.mostrar();
-    res.send (materias)
+    res.render ('materias', {
+      title: 'Materias',
+      materias: materias
+    })
   });
+
+  router.get('/', function(req, res, next) {
+    res.send (MateriasController.mostrar());
+    });
 
   router.post('/', function(req, res, next) {
     MateriasController.añadir(req.body);
