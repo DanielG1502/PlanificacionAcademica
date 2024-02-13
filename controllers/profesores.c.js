@@ -37,10 +37,13 @@ class ProfesoresController{
         profesores.push(profesor)
     }
 
-    editar(id, materia){
+    editar(id, nombre, apellido, materia){
         for (const p of profesores) {
             if (p.id === id) {
+                 p.nombre = nombre;
+                p.apellido = apellido;
                 p.materias = materia;
+               
             }
         }
     }
