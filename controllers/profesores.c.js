@@ -40,9 +40,9 @@ class ProfesoresController{
     editar(id, nombre, apellido, materia){
         for (const p of profesores) {
             if (p.id === id) {
-                 p.nombre = nombre;
-                p.apellido = apellido;
-                p.materias = materia;
+                 p.nombre === nombre;
+                p.apellido === apellido;
+                p.materias === materia;
                
             }
         }

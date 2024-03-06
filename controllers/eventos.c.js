@@ -34,9 +34,9 @@ class EventosController{
     editar(id, tipo, fecha, materia){
         for (const e of eventos) {
             if (e.id === id) {
-                e.tipo = tipo;
-                e.fecha = fecha;
-                e.materia = materia;
+                e.tipo === tipo;
+                e.fecha === fecha;
+                e.materia === materia;
             }
         }
     }

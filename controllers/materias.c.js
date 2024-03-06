@@ -46,9 +46,9 @@ class MateriasController{
     editar(id, nombre, seccion, alumnos){
         for (const m of materias) {
             if (m.id === id) {
-                m.nombre = nombre;
-                m.secciones = seccion;
-                m.numalumnos = alumnos;
+                m.nombre === nombre;
+                m.secciones === seccion;
+                m.numalumnos === alumnos;
             }
         }
     }
