@@ -1,17 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var EventosController = require ("../controllers/eventos.c")
+var EventosController = require ("../controllers/eventos.c");
+const eventosC = require('../controllers/eventos.c');
 
 router.get('/view', function(req, res, next) {
-    const eventos = EventosController.mostrar();
+    const eventos = EventosController.mostrar().then(respuesta);
     res.render ('eventos', {
       title: 'Eventos',
-      eventos: eventos
+      respuesta: eventos
     })
   });
 
   router.get('/', function(req, res, next) {
-    res.send (EventosController.mostrar());
+    //res.send (EventosController.mostrar());
+    EventosController.mostrar()
+      .then((resultado) =>{
+        const respuesta = {
+          eventos:resultado
+        }
+        res.send(respuesta);
+      })
     });
 
   router.post('/', function(req, res, next) {
