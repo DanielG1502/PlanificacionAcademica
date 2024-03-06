@@ -23,8 +23,15 @@ router.get('/view', function(req, res, next) {
     });
 
   router.post('/', function(req, res, next) {
-    EventosController.añadir(req.body);
-    res.send(EventosController.mostrar());
+   // EventosController.añadir(req.body);
+   // res.send(EventosController.mostrar());
+   EventosController.añadir(req.body)
+   .then(()=>{
+    EventosController.mostrar()
+    .then((resultados)=>{
+      res.send(resultados);
+    })
+   })
 });
 
 router.put('/:id', function(req, res, next) {

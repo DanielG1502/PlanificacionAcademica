@@ -39,9 +39,17 @@ class EventosController{
         // return eventos;
     }
 
-    añadir(evento){  
-        evento.id = eventos.length + 1;
-        eventos.push(evento)
+    añadir(evento){
+        
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO eventos SET ?', evento, function (error, results, fields) {
+            
+                if (error) reject(error);
+                resolve(results);})
+        
+        })
+        //evento.id = eventos.length + 1;
+        //eventos.push(evento)
     }
 
     editar(id, tipo, fecha, materia){
