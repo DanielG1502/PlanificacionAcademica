@@ -1,24 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var EventosController = require ("../controllers/eventos.c");
-const eventosC = require('../controllers/eventos.c');
+var EventosController = require ("../controllers/eventos.c")
 
-router.get('/view', function(req, res, next) {
-    const eventos = EventosController.mostrar().then(respuesta);
-    res.render ('eventos', {
-      title: 'Eventos',
-      respuesta: eventos
-    })
-  });
+//router.get('/view', function(req, res, next) {
+//    EventosController.mostrar()
+//    .then(eventos);
+//    res.render ('eventos', {
+//      title: 'Eventos',
+ //     eventos
+ //   })
+//  });
 
   router.get('/', function(req, res, next) {
     //res.send (EventosController.mostrar());
     EventosController.mostrar()
       .then((resultado) =>{
-        const respuesta = {
+        const resultados = {
           eventos:resultado
         }
-        res.send(respuesta);
+        res.send(resultados);
       })
     });
 
@@ -35,7 +35,14 @@ router.get('/view', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-  res.send(EventosController.editar(req.params.id, req.body));
+  //res.send(EventosController.editar(req.params.id, req.body));
+  EventosController.editar(req.body, req.params.id)
+  .then(()=>{
+    EventosController.mostrar()
+    .then((resultados)=>{
+      res.send(resultados);
+    })
+   })
 });
 
 router.delete('/:id', function(req, res, next) {

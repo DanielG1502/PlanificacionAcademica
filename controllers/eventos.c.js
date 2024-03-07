@@ -25,13 +25,13 @@ const db = require("./conexion")
 class EventosController{
 
     mostrar(){
-        console.log("punto")
+
         return new Promise((resolve, reject) => {
              db.query('SELECT * FROM eventos', function (error, results, fields) {
             
             if (error) reject(error);
             resolve(results);
-            console.log("hola")
+
           });
            
         })
@@ -53,23 +53,40 @@ class EventosController{
     }
 
     editar(id, tipo, fecha, materia){
-        for (const e of eventos) {
-            if (e.id === id) {
-                e.tipo === tipo;
-                e.fecha === fecha;
-                e.materia === materia;
-            }
+
+        return new Promise((resolve, reject) => {
+
+            db.query('UPDATE eventos SET tipo=?, fecha=?, materia=? WHERE id=?', [id, tipo, fecha, materia], function (error, results, fields) {
+            
+                if (error) reject(error);
+                resolve(results);})
+        
+        })
+       // for (const e of eventos) {
+       //     if (e.id === id) {
+       //         e.tipo === tipo;
+       //         e.fecha === fecha;
+       //        e.materia === materia;
+       //     }
+       //}
         }
-    }
+
 
     eliminar(id) {
-        for (let i = 0; i < eventos.length; i++) {
-            const evento = eventos[i];
+       
+        return new Promise((resolve, reject) => {
+
+            db.query('DELETE FROM eventos WHERE eventos.id=?', [id], function (error, results, fields) {
             
-            if (evento.id === id) {
-                eventos.splice(i, 1);
-            }
-        }
+                if (error) reject(error);
+                resolve(results);})})
+        // for (let i = 0; i < eventos.length; i++) {
+        //    const evento = eventos[i];
+            
+          //  if (evento.id === id) {
+         //       eventos.splice(i, 1);
+        //}
+       // }
     }
 }
 
