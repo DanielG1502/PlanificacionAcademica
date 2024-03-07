@@ -11,10 +11,10 @@ var ProfesoresController = require ("../controllers/profesores.c")
  // });
 
   router.get('/', function(req, res, next) {
-    EventosController.mostrar()
+    ProfesoresController.mostrar()
       .then((resultado) =>{
         const resultados = {
-          eventos:resultado
+          profesores:resultado
         }
         res.send(resultados);
       })
@@ -23,9 +23,9 @@ var ProfesoresController = require ("../controllers/profesores.c")
     });
 
   router.post('/', function(req, res, next) {
-    EventosController.añadir(req.body)
+    ProfesoresController.añadir(req.body)
     .then(()=>{
-     EventosController.mostrar()
+     ProfesoresController.mostrar()
      .then((resultados)=>{
        res.send(resultados);
      })
@@ -35,9 +35,9 @@ var ProfesoresController = require ("../controllers/profesores.c")
 });
 
 router.put('/:id', function(req, res, next) {
-  EventosController.editar(req.body, req.params.id)
+  ProfesoresController.editar(req.body, req.params.id)
   .then(()=>{
-    EventosController.mostrar()
+    ProfesoresController.mostrar()
     .then((resultados)=>{
       res.send(resultados);
     })
