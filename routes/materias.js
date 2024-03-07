@@ -12,7 +12,7 @@ var MateriasController = require ("../controllers/materias.c")
 
   router.get('/', function(req, res, next) {
     //res.send (MateriasController.mostrar());
-    MateriasControllerateriasController.mostrar()
+    MateriasController.mostrar()
     .then((resultado) =>{
       const resultados = {
         materias:resultado
