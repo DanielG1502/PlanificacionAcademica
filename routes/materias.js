@@ -2,16 +2,23 @@ var express = require('express');
 var router = express.Router();
 var MateriasController = require ("../controllers/materias.c")
 
-router.get('/view', function(req, res, next) {
-    const materias = MateriasController.mostrar();
-    res.render ('materias', {
-      title: 'Materias',
-      materias: materias
-    })
-  });
+//router.get('/view', function(req, res, next) {
+  //  const materias = MateriasController.mostrar();
+    //res.render ('materias', {
+      //title: 'Materias',
+      //materias: materias
+   // })
+  //});
 
   router.get('/', function(req, res, next) {
-    res.send (MateriasController.mostrar());
+    //res.send (MateriasController.mostrar());
+    MateriasControllerateriasController.mostrar()
+    .then((resultado) =>{
+      const resultados = {
+        materias:resultado
+      }
+      res.send(resultados);
+    })
     });
 
   router.post('/', function(req, res, next) {

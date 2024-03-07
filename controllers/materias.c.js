@@ -1,41 +1,50 @@
-let materias = [
-    {
-        "id": "1" ,
-        "nombre": "Matematica 2",
-        "secciones": "C2",
-        "numalumnos": 15,
-},
-    {
-        "id": "2",
-        "nombre": "Logica Basica",
-        "secciones": "B4",
-        "numalumnos": 26,
-
-},
-    {
-    "id": "3",
-    "nombre": "Metodos Numericos",
-    "secciones": "A1",
-    "numalumnos": 10,
-},
-    {
-    "id": "4",
-    "nombre": "Matematica 0",
-    "secciones": ["E1", "E3"],
-    "numalumnos": 40,
-},
-    {
-    "id": "5",
-    "nombre": "Fisica",
-    "secciones": "C3",
-    "numalumnos": 18,
-}
-]
+//let materias = [
+//    {
+//        "id": "1" ,
+//        "nombre": "Matematica 2",
+//        "secciones": "C2",
+//        "numalumnos": 15,
+//},
+//    {
+//        "id": "2",
+//        "nombre": "Logica Basica",
+//        "secciones": "B4",
+//        "numalumnos": 26,
+//
+//},
+//    {
+//    "id": "3",
+//    "nombre": "Metodos Numericos",
+//    "secciones": "A1",
+//    "numalumnos": 10,
+//},
+//    {
+//    "id": "4",
+//    "nombre": "Matematica 0",
+//    "secciones": ["E1", "E3"],
+//    "numalumnos": 40,
+//},
+//    {
+//    "id": "5",
+//    "nombre": "Fisica",
+//    "secciones": "C3",
+//    "numalumnos": 18,
+//}
+//]
 
 class MateriasController{
 
     mostrar(){
-        return materias;
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM materias', function (error, results, fields) {
+           
+           if (error) reject(error);
+           resolve(results);
+
+         });
+          
+       })
+        //return materias;
     }
 
     añadir(materia){  
