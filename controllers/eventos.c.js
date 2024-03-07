@@ -79,7 +79,8 @@ class EventosController{
             db.query('DELETE FROM eventos WHERE eventos.id=?', [id], function (error, results, fields) {
             
                 if (error) reject(error);
-                resolve(results);})})
+                resolve(results);})
+            })
         // for (let i = 0; i < eventos.length; i++) {
         //    const evento = eventos[i];
             
