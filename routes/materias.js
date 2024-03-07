@@ -45,6 +45,7 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
+  
   MateriasController.eliminar(req.params.id);
   res.send(MateriasController.mostrar());
 });

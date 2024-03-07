@@ -78,13 +78,19 @@ class MateriasController{
     }
 
     eliminar(id) {
-        for (let i = 0; i < materias.length; i++) {
-            const materia = materias[i];
+        return new Promise((resolve, reject) => {
+
+            db.query('DELETE FROM materias WHERE materias.id=?', [id], function (error, results, fields) {
             
-            if (materia.id === id) {
-                materias.splice(i, 1);
-            }
-        }
+                if (error) reject(error);
+                resolve(results);})})
+      //  for (let i = 0; i < materias.length; i++) {
+       //     const materia = materias[i];
+        //    
+          //  if (materia.id === id) {
+           //     materias.splice(i, 1);
+           // }
+        //}
     }
 }
 
