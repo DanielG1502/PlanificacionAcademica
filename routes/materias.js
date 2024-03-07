@@ -22,12 +22,26 @@ var MateriasController = require ("../controllers/materias.c")
     });
 
   router.post('/', function(req, res, next) {
-    MateriasController.añadir(req.body);
-    res.send(MateriasController.mostrar());
+    MateriasController.añadir(req.body)
+    .then(()=>{
+     MateriasController.mostrar()
+     .then((resultados)=>{
+       res.send(resultados);
+     })
+    })
+   // MateriasController.añadir(req.body);
+   // res.send(MateriasController.mostrar());
 });
 
 router.put('/:id', function(req, res, next) {
-  res.send(MateriasController.editar(req.params.id, req.body));
+  MateriasController.editar(req.body, req.params.id)
+  .then(()=>{
+    MateriasController.mostrar()
+    .then((resultados)=>{
+      res.send(resultados);
+    })
+   })
+  //res.send(MateriasController.editar(req.params.id, req.body));
 });
 
 router.delete('/:id', function(req, res, next) {

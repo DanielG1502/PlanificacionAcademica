@@ -47,19 +47,34 @@ class MateriasController{
         //return materias;
     }
 
-    añadir(materia){  
-        materia.id = materias.length + 1;
-        materias.push(materia)
+    añadir(materia){ 
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO materias SET ?', materia, function (error, results, fields) {
+            
+                if (error) reject(error);
+                resolve(results);})
+        
+        }) 
+      //  materia.id = materias.length + 1;
+      //  materias.push(materia)
     }
 
     editar(id, nombre, seccion, alumnos){
-        for (const m of materias) {
-            if (m.id === id) {
-                m.nombre === nombre;
-                m.secciones === seccion;
-                m.numalumnos === alumnos;
-            }
-        }
+        return new Promise((resolve, reject) => {
+
+            db.query('UPDATE materias SET nombre=?, seccion=?, alumnos=? WHERE id=?', [id, nombre, seccion, alumnos], function (error, results, fields) {
+            
+                if (error) reject(error);
+                resolve(results);})
+        
+        })
+      //  for (const m of materias) {
+      //      if (m.id === id) {
+      //          m.nombre === nombre;
+      //          m.secciones === seccion;
+      //          m.numalumnos === alumnos;
+      //      }
+        //}
     }
 
     eliminar(id) {
