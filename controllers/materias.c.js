@@ -59,7 +59,7 @@ class MateriasController{
       //  materias.push(materia)
     }
 
-    editar(id, nombre, seccion, alumnos){
+    editar(id, nombre, seccion, numalumnos){
         return new Promise((resolve, reject) => {
 
             db.query('UPDATE materias SET nombre=?, seccion=?, numalumnos=? WHERE id=?', [id, nombre, seccion, numalumnos], function (error, results, fields) {
